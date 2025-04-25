@@ -150,6 +150,90 @@ public class Ex03약수찾기 {
 
 ---
 
+## ✅ 간단 계산기 메서드 실습
+
+```java
+
+public class Ex04계산기실습 {
+
+    public static void main(String[] args) {
+        int num1 = 50;
+        int num2 = 15;
+        char op = '-';
+        System.out.println("계산 결과: " + cal(num1, num2, op));
+    }
+
+    // 간단한 사칙연산 + 나머지 연산 처리 메서드
+    private static int cal(int num1, int num2, char op) {
+        int result = 0;
+        if(op == '-') {
+            result = num1 - num2;
+        } else if(op == '+') {
+            result = num1 + num2;
+        } else if(op == '*') {
+            result = num1 * num2;
+        } else if(op == '/') {
+            result = num1 / num2;
+        } else {
+            // 나머지 연산 (mod)
+            result = num1 % num2;
+        }
+        return result;
+    }
+}
+
+```
+
+### 💡 정리
+
+- `char` 타입은 작은 따옴표 `' '`로 감싸야 함 (`'-'`, `'+'` 등)
+- 분기 처리를 통해 계산기처럼 동작
+- 나눗셈 시 0으로 나누는 경우를 체크하려면 `if(num2 != 0)` 조건 추가 가능
+
+---
+
+## ✅ 메서드 오버로딩 실습
+
+```java
+
+public class Ex05메서드오버로딩 {
+    public static void main(String[] args) {
+        setName("홍", "길동");
+        setName("데이비드", "애플", "로저");
+    }
+
+    // 2개 매개변수를 받는 setName (한국식)
+    public static void setName(String firstName, String lastName) {
+        System.out.println("이름: " + lastName + firstName);
+    }
+
+    // 3개 매개변수를 받는 setName (영미식)
+    public static void setName(String firstName, String middleName, String lastName) {
+        System.out.println("이름: " + firstName + " " + middleName + " " + lastName);
+    }
+}
+
+```
+
+### 💡 오버로딩 정리
+
+- **메서드 오버로딩(Method Overloading)**: 같은 이름의 메서드를 매개변수만 다르게 정의
+- **성립 조건**
+    1. 메서드 이름은 같아야 한다
+    2. 매개변수의 **개수** 또는 **자료형**이 달라야 한다
+    3. 리턴타입만 다른 건 오버로딩이 **아님**
+
+### 📌 접근제한자 정리
+
+| 제한자 | 접근 가능 범위 |
+| --- | --- |
+| `public` | 모든 클래스에서 접근 가능 |
+| `private` | 같은 클래스 내부에서만 접근 |
+| `protected` | 같은 패키지 or 자식 클래스에서 접근 가능 |
+| (default) | 같은 패키지 내 클래스에서만 접근 가능 |
+
+---
+
 ## ⚠️ 자주 발생하는 메서드 관련 에러 정리
 
 | 에러 메시지 | 원인 | 해결 방법 |
@@ -160,5 +244,3 @@ public class Ex03약수찾기 {
 | `method [메서드명] in class [클래스명] cannot be applied to given types` | 인자 타입 또는 개수 불일치 | 메서드 정의와 호출 인자 확인 |
 | `variable might not have been initialized` | 지역 변수 초기화 없이 사용 | 변수 선언 후 초기값 할당 |
 | `non-static variable cannot be referenced from a static context` | static 메서드에서 non-static 변수 사용 | 객체 생성 후 접근 or 변수 static으로 변경 |
-
----
