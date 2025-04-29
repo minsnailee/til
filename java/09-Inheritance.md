@@ -1,4 +1,4 @@
-# 📘 Java 상속(Inheritance) 실습 정리
+# 📘 Java Inheritance
 
 📅 **2025-04-29**
 

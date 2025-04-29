@@ -1,6 +1,4 @@
-# 📘 Java 추상 클래스 & 인터페이스 실습 정리
-
-📅 **2025-04-29**
+# 📘 Java Abstract Classes & Interfaces
 
 ---
 
