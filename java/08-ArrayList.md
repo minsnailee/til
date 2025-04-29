@@ -1,4 +1,4 @@
-# 📘 TIL - 클래스, 캡슐화, 생성자, 객체 배열, ArrayList
+# 📘 Java - 클래스, 캡슐화, 생성자, 객체 배열, ArrayList
 
 📅 Date: 2025-04-28
 
