@@ -150,7 +150,7 @@ public class Ex02Login {
 
 ---
 
-### 📁 `Ex03Delete.java` - 회원 탈퇴 기능
+### 📁 `Ex03delete.java` - 회원 탈퇴 기능
 
 ```java
 
@@ -213,6 +213,84 @@ public class Ex03Delete {
 }
 
 ```
+
+---
+
+### 📁 `Ex04selectAll.java` - 전체 회원 조회 기능
+
+```java
+
+package jdbc기초;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Ex04selectAll {
+
+	public static void main(String[] args) {
+
+		System.out.println("전체 회원 조회");
+		System.out.println("ID \t 이름 \t 나이 \t 점수");
+
+		PreparedStatement psmt = null;
+		Connection conn = null;
+		ResultSet rs = null;
+
+		try {
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+
+			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+            String user = "your_username";
+            String password = "your_password";
+			conn = DriverManager.getConnection(url, user, password);
+
+			String sql = "SELECT * FROM NLPMEMBER";
+
+			psmt = conn.prepareStatement(sql);
+			
+			rs = psmt.executeQuery();
+
+			while (true) {
+				if(rs.next()==true) {
+					String id = rs.getString("id");
+					String name = rs.getString("name");
+					int age = rs.getInt("age");
+					int score = rs.getInt("score");
+					
+					System.out.println("----------------------------------");
+	                System.out.println(id + " \t " + name + "\t " + age + " \t " + score);
+				}else {
+					break;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (psmt != null) {
+					psmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+}
+
+
+```
+
 
 ## 📘 개념 & 문법 요약
 
