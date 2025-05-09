@@ -35,7 +35,7 @@ iris_data.data           # X값 (특징값)
 iris_data.target         # y값 (정답 레이블)
 iris_data.feature_names  # 특성 이름
 iris_data.target_names   # 품종 이름
-print(iris_data.DESCR)   # 데이터 설명
+print(iris_data.DESCR)   # 데이터 설명 
 
 ```
 
@@ -204,7 +204,7 @@ iris_data.target_names
 
 ---
 
-### 📌 **최종 요약**
+### 📌 **정리**
 
 - Iris 데이터셋을 활용해 KNN 분류기를 구현하였다.
 - `train_test_split`을 통해 데이터를 나누고, 다양한 K값을 실험하여 최적값을 찾았다.
