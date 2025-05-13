@@ -128,3 +128,149 @@ train.drop('Cabin', axis=1, inplace=True)
 | `Fare` (test) | 3등석 남성의 중앙값 7.925로 채움 |
 | `Age` | `Pclass`, `Sex` 기준 평균값으로 채움 (함수 사용) |
 | `Cabin` | 결측치는 'M'으로 대체 후 첫 글자만 추출하여 `Deck` 생성, 기존 `Cabin`은 삭제 |
+
+---
+
+## 🔍 4. EDA (탐색적 데이터 분석)
+
+데이터의 분포와 특징을 시각화해서 인사이트를 얻는 과정입니다.
+
+### 🎯 목표
+
+- 각 변수들이 생존(`Survived`)에 어떤 영향을 미쳤는지 확인
+- 이상치(outlier) 탐색
+
+### 📊 시각화 예시
+
+```python
+
+import seaborn as sns
+
+# 성별 생존률
+sns.countplot(data=train, x='Sex', hue='Survived')
+plt.title("Sex vs Survived")
+plt.show()
+
+# Pclass 생존률
+sns.countplot(data=train, x='Pclass', hue='Survived')
+plt.title("Pclass vs Survived")
+plt.show()
+
+# Age 분포
+sns.histplot(data=train, x='Age', hue='Survived', multiple='stack', bins=30)
+plt.title("Age distribution by Survived")
+plt.show()
+
+# Fare 분포
+sns.histplot(data=train, x='Fare', hue='Survived', multiple='stack', bins=30)
+plt.title("Fare distribution by Survived")
+plt.show()
+
+# Deck별 생존률
+sns.countplot(data=train, x='Deck', hue='Survived')
+plt.title("Deck vs Survived")
+plt.show()
+
+```
+
+---
+
+## 🧪 5. 특성 공학 (Feature Engineering)
+
+모델의 성능을 높이기 위한 중요한 과정입니다.
+
+### 🧹 컬럼 정리
+
+- 불필요한 컬럼 제거: `Name`, `Ticket`
+- 범주형 데이터 변환: `Sex`, `Embarked`, `Deck` 등 → 수치형 변환 필요
+
+```python
+
+# Name, Ticket 제거
+train.drop(['Name', 'Ticket'], axis=1, inplace=True)
+test.drop(['Name', 'Ticket'], axis=1, inplace=True)
+
+# Label Encoding
+from sklearn.preprocessing import LabelEncoder
+
+cols = ['Sex', 'Embarked', 'Deck']
+le = LabelEncoder()
+
+for col in cols:
+    train[col] = le.fit_transform(train[col])
+    test[col] = le.transform(test[col])  # 동일하게 변환해야 함
+
+```
+
+---
+
+## 🧠 6. 머신러닝 모델링
+
+### 🎯 목표
+
+- 이진 분류 모델을 사용해 `Survived` 예측
+
+### 💡 사용할 모델 예시
+
+- `LogisticRegression`
+- `RandomForestClassifier`
+- `GradientBoostingClassifier`
+
+### 예시 코드
+
+```python
+
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+# 데이터 분리
+X = train.drop('Survived', axis=1)
+y = train['Survived']
+
+X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 모델 학습
+model = RandomForestClassifier(random_state=42)
+model.fit(X_train, y_train)
+
+# 예측
+pred = model.predict(X_val)
+
+# 정확도 평가
+print("Validation Accuracy:", accuracy_score(y_val, pred))
+
+```
+
+---
+
+## 📤 7. 예측 및 제출 파일 만들기
+
+```python
+
+# test 데이터에 대해 예측
+test_pred = model.predict(test)
+
+# submission 파일 생성
+submission = pd.DataFrame({
+    'PassengerId': test.index,
+    'Survived': test_pred
+})
+
+submission.to_csv('submission.csv', index=False)
+
+```
+
+---
+
+## ✅ 마무리 정리
+
+| 단계 | 내용 |
+| --- | --- |
+| 문제 정의 | 타이타닉 생존자 분류 (이진 분류) |
+| 데이터 수집 | Kaggle 데이터셋 (train/test.csv) |
+| 전처리 | 결측치 채우기, Cabin → Deck, Age 채우기 등 |
+| EDA | 분포 확인, 이상치 확인 |
+| 특성공학 | 불필요한 컬럼 제거, 범주형 → 수치형 변환 |
+| 모델링 | 랜덤 포레스트로 예측 및 평가 |
+| 제출 | submission.csv 생성 |
