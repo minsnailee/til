@@ -5,8 +5,7 @@
 ### ✔ GET 방식
 
 ```html
-html
-복사편집
+
 <form action="send" method="get">
 	data : <input type="text" name="data">
 	<input type="submit" value="get으로 데이터 전송">
@@ -21,8 +20,7 @@ html
 ### ✔ POST 방식
 
 ```html
-html
-복사편집
+
 <form action="send" method="post">
 	data : <input type="text" name="data">
 	<input type="submit" value="post로 데이터 전송">
@@ -100,8 +98,7 @@ html
 **에러 발생 시 보여줄 페이지**
 
 ```html
-html
-복사편집
+
 <h3>점검중</h3>
 <img src="..."> <!-- 점검 이미지 출력 -->
 
@@ -116,8 +113,7 @@ html
 **공통 하단 정보 포함 페이지**
 
 ```html
-html
-복사편집
+
 <p>기관명 : 스마트인재개발원</p>
 <p>전화번호 : 062-355-3509</p>
 <p>주소 : 동구 중앙로 196</p>
