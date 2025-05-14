@@ -40,7 +40,7 @@
 
 ### ✔ JSP 구성요소 설명
 
-```
+```jsp
 
 <% int num = 10; %>  // 스크립틀릿
 <%= num %>           // 표현식 (값 출력)
@@ -50,7 +50,7 @@
 
 ### ✔ 조건문 사용 예시
 
-```
+```jsp
 
 <% if(num % 2 == 0) { %>
   <h1>짝수입니다.</h1>
@@ -130,7 +130,7 @@
 
 ### ✔ JSTL 사용을 위한 taglib 선언
 
-```
+```jsp
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -138,7 +138,7 @@
 
 ### ✔ 반복문
 
-```
+```jsp
 
 <c:forEach begin="1" end="3" step="1">
 	<h1>Hello world2</h1>
@@ -148,7 +148,7 @@
 
 ### ✔ 조건문 (if)
 
-```
+```jsp
 
 <c:if test="${num1 % 2 == 0}">
 	<h1>짝수입니다.</h1>
@@ -158,7 +158,7 @@
 
 ### ✔ choose-when-otherwise (switch-case 유사)
 
-```
+```jsp
 
 <c:choose>
   <c:when test="${num1 % 2 == 1}">
