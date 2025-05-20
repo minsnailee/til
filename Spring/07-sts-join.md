@@ -235,8 +235,8 @@ public interface MemberMapper {
 
 ```xml
 
-<mapper namespace="com.smhrd.myapp.mapper.MemberMapper">
-    <insert id="join" parameterType="com.smhrd.myapp.model.MemberVO">
+<mapper namespace="com.user.myapp.mapper.MemberMapper">
+    <insert id="join" parameterType="com.user.myapp.model.MemberVO">
         INSERT INTO MEMBER VALUES(#{email}, #{pw}, #{tel}, #{address})
     </insert>
 </mapper>
@@ -258,9 +258,9 @@ public interface MemberMapper {
 <!-- HikariCP DB 설정 -->
 <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
     <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/spring_db?serverTimezone=UTC&amp;characterEncoding=UTF-8" />
-    <property name="username" value="root" />
-    <property name="password" value="123456" />
+    <property name="jdbcUrl" value="jdbc:mysql://localhost:~" />
+    <property name="username" value="-" />
+    <property name="password" value="-" />
 </bean>
 
 <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
@@ -273,7 +273,7 @@ public interface MemberMapper {
 </bean>
 
 <!-- Mapper Scan -->
-<mybatis-spring:scan base-package="com.smhrd.myapp.mapper" />
+<mybatis-spring:scan base-package="com.user.myapp.mapper" />
 
 ```
 
@@ -394,4 +394,4 @@ System.out.println("email : " + email);
 | --- | --- |
 | `form action` 경로 오타 | `/member/join.do` 정확히 맞춰야 Controller에서 받음 |
 | VO 필드와 input name 불일치 | `name="email"` ↔ `MemberVO.email` 일치 필요 |
-| mapper.xml의 `namespace` 불일치 | `namespace="com.smhrd.myapp.mapper.MemberMapper"` 정확 |
+| mapper.xml의 `namespace` 불일치 | `namespace="com.user.myapp.mapper.MemberMapper"` 정확 |
