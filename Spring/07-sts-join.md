@@ -1,4 +1,5 @@
-# 📚 Spring MVC 회원가입
+# 📚 Spring MVC 회원가입 기능 구현 정리
+
 Spring MVC + MyBatis + JSP + MySQL 기반 회원가입 구현 실습 내용
 
 ## ✅ 1. 프로젝트 개요
