@@ -62,8 +62,7 @@ public String logout(HttpSession session) {
 ## ✅ 3. 전체 회원 조회 기능 구현 흐름
 
 ```
-pgsql
-복사편집
+
 admin 로그인 ➝ header.jsp (전체 회원정보 클릭) ➝ MemberController ➝ MemberMapper ➝ MemberMapper.xml ➝ MySQL ➝ select.jsp 출력
 
 ```

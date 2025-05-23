@@ -342,8 +342,7 @@ MyBatis, Spring, MySQL, HikariCP, JSTL 등 필요한 라이브러리 모두 등�
 ## ✅ 전체 흐름 요약 다이어그램
 
 ```
-text
-복사편집
+
 1. header.jsp (회원가입 form 입력)
           ↓
 2. MemberController.join()
