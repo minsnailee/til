@@ -99,5 +99,5 @@ print(svm_model.score(X_test, y_test))
 
 ### 7. 평가지표
 
-- *분류 문제이므로 정확도(Accuracy)**를 주요 평가지표로 사용.
+- *분류 문제이므로 정확도(Accuracy)** 를 주요 평가지표로 사용.
 - 향후에는 정밀도(Precision), 재현율(Recall), F1-score 등도 고려 가능.
